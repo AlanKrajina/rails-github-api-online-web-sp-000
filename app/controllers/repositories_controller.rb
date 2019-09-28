@@ -13,7 +13,6 @@ class RepositoriesController < ApplicationController
     user_hash = JSON.parse(user_resp.body)
     session[:username] = user_hash['login']
   end
-  end
 
   def create
     response = Faraday.post "https://api.github.com/user/repos", {name: params[:name]}.to_json, {'Authorization' => "token #{session[:token]}", 'Accept' => 'application/json'}
